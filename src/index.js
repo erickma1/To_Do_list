@@ -1,12 +1,8 @@
-import _ from 'lodash';
+import './style.css';
+import { createToDoList, renderToDoList } from './modules/ul.js';
 
-function component() {
-  const element = document.createElement("div");
-
-  // Lodash, now imported by this script
-  element.innerHTML = _.join(["Hello", "webpack"], " ");
-
-  return element;
-}
-
-document.body.appendChild(component());
+window.onload = () => {
+  const todoList = createToDoList();
+  const ulElement = renderToDoList(todoList);
+  document.querySelector('#list').appendChild(ulElement);
+};

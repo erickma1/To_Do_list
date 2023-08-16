@@ -172,6 +172,6 @@ I would like to thank Eric for the immense support.
 
 ## 📝 License <a name="license"></a>
 
-This project is [MIT](https://github.com/erickma1/Awesome_books/blob/To_Do_list/LICENSE) licensed.
+This project is [MIT](https://github.com/erickma1/To_Do_list/blob/main/LICENSE) licensed.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

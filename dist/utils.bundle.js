@@ -10,20 +10,51 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/modules/taskFunctions.js":
+/*!**************************************!*\
+  !*** ./src/modules/taskFunctions.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst updateTask = (liElement, todoList) => {\r\n  const taskDesc = liElement.querySelector('.task-description').value;\r\n  const chkState = liElement.querySelector('.completed-checkbox').checked;\r\n  const taskIndex = liElement.value - 1;\r\n  todoList[taskIndex].description = taskDesc;\r\n  todoList[taskIndex].completed = chkState;\r\n  localStorage.setItem('todo-list', JSON.stringify(todoList));\r\n};\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (updateTask);\n\n//# sourceURL=webpack://to_do_list/./src/modules/taskFunctions.js?");
+
+/***/ }),
+
 /***/ "./src/modules/ul.js":
 /*!***************************!*\
   !*** ./src/modules/ul.js ***!
   \***************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ addEventListeners)\n/* harmony export */ });\nfunction addEventListeners(liElement, todoObj) {\r\n  const dscr = liElement.querySelector('.task-description');\r\n  const checkbox = liElement.querySelector('.completed-checkbox');\r\n  const trash = liElement.querySelector('.trash-icon');\r\n\r\n  checkbox.addEventListener('change', function () {\r\n    dscr.style.textDecoration = this.checked ? 'line-through' : 'none';\r\n    todoObj.updateTask(liElement);\r\n  });\r\n\r\n  dscr.addEventListener('focus', function () {\r\n    liElement.style.backgroundColor = '#ffeea8';\r\n    this.style.cursor = 'text';\r\n  });\r\n\r\n  dscr.addEventListener('focusout', function () {\r\n    liElement.style.backgroundColor = 'transparent';\r\n    this.style.cursor = 'default';\r\n    if (this.value.trim() === '') {\r\n      todoObj.removeTask(liElement);\r\n    } else {\r\n      todoObj.updateTask(liElement);\r\n    }\r\n  });\r\n\r\n  dscr.addEventListener('keydown', (e) => {\r\n    if (e.keyCode === 13) {\r\n      e.target.blur();\r\n    }\r\n  });\r\n\r\n  trash.addEventListener('click', () => {\r\n    todoObj.removeTask(liElement);\r\n  });\r\n}\n\n//# sourceURL=webpack://to_do_list/./src/modules/ul.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (/* binding */ addEventListeners)\n/* harmony export */ });\n/* harmony import */ var _taskFunctions_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./taskFunctions.js */ \"./src/modules/taskFunctions.js\");\n\r\n\r\nfunction addEventListeners(liElement, todoObj, todoList) {\r\n  const dscr = liElement.querySelector('.task-description');\r\n  const checkbox = liElement.querySelector('.completed-checkbox');\r\n  const trash = liElement.querySelector('.trash-icon');\r\n\r\n  checkbox.addEventListener('change', function () {\r\n    dscr.style.textDecoration = this.checked ? 'line-through' : 'none';\r\n    (0,_taskFunctions_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(liElement, todoList);\r\n  });\r\n\r\n  dscr.addEventListener('focus', function () {\r\n    liElement.style.backgroundColor = '#ffeea8';\r\n    this.style.cursor = 'text';\r\n  });\r\n\r\n  dscr.addEventListener('focusout', function () {\r\n    liElement.style.backgroundColor = 'transparent';\r\n    this.style.cursor = 'default';\r\n    if (this.value.trim() === '') {\r\n      todoObj.removeTask(liElement);\r\n    } else {\r\n      (0,_taskFunctions_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"])(liElement, todoList);\r\n    }\r\n  });\r\n\r\n  dscr.addEventListener('keydown', (e) => {\r\n    if (e.keyCode === 13) {\r\n      e.target.blur();\r\n    }\r\n  });\r\n\r\n  trash.addEventListener('click', () => {\r\n    todoObj.removeTask(liElement);\r\n  });\r\n}\n\n//# sourceURL=webpack://to_do_list/./src/modules/ul.js?");
 
 /***/ })
 
 /******/ 	});
 /************************************************************************/
-/******/ 	// The require scope
-/******/ 	var __webpack_require__ = {};
+/******/ 	// The module cache
+/******/ 	var __webpack_module_cache__ = {};
+/******/ 	
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/ 		// Check if module is in cache
+/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
+/******/ 		if (cachedModule !== undefined) {
+/******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = __webpack_module_cache__[moduleId] = {
+/******/ 			// no module.id needed
+/******/ 			// no module.loaded needed
+/******/ 			exports: {}
+/******/ 		};
+/******/ 	
+/******/ 		// Execute the module function
+/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
+/******/ 	
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
 /******/ 	
 /************************************************************************/
 /******/ 	/* webpack/runtime/define property getters */
@@ -59,8 +90,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = {};
-/******/ 	__webpack_modules__["./src/modules/ul.js"](0, __webpack_exports__, __webpack_require__);
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/modules/ul.js");
 /******/ 	
 /******/ })()
 ;

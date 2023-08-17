@@ -1,11 +1,13 @@
-export default function addEventListeners(liElement, todoObj) {
+import updateTask from './taskFunctions.js';
+
+export default function addEventListeners(liElement, todoObj, todoList) {
   const dscr = liElement.querySelector('.task-description');
   const checkbox = liElement.querySelector('.completed-checkbox');
   const trash = liElement.querySelector('.trash-icon');
 
   checkbox.addEventListener('change', function () {
     dscr.style.textDecoration = this.checked ? 'line-through' : 'none';
-    todoObj.updateTask(liElement);
+    updateTask(liElement, todoList);
   });
 
   dscr.addEventListener('focus', function () {
@@ -19,7 +21,7 @@ export default function addEventListeners(liElement, todoObj) {
     if (this.value.trim() === '') {
       todoObj.removeTask(liElement);
     } else {
-      todoObj.updateTask(liElement);
+      updateTask(liElement, todoList);
     }
   });
 

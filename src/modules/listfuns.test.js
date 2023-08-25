@@ -45,4 +45,19 @@ describe('ToDo-List: All CRUD Functions', () => {
     });
   });
   
+  describe('Remove Task', () => {
+    test('Test ToDo-List to have only 4 tasks left', () => {
+      const liElements = document.querySelectorAll('.draggable-item');
+      todo.removeTask(liElements[3]);
+      expect(todo.todoList.length).toBe(4);
+    });
+    test('Test LocalStorage to have only 4 tasks left', () => {
+      const todoList = JSON.parse(localStorage.getItem('todo-list'));
+      expect(todoList.length).toBe(4);
+    });
+    test('Test DOM to have only 4 tasks left', () => {
+      const liElements = document.querySelectorAll('.draggable-item');
+      expect(liElements).toHaveLength(4);
+    });
+  });
 });

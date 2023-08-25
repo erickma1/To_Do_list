@@ -1,4 +1,5 @@
 import ToDo from './listfuns.js';
+import { updateTask } from './taskFunctions.js';
 
 const todo = new ToDo();
 
@@ -60,4 +61,7 @@ describe('ToDo-List: All CRUD Functions', () => {
       expect(liElements).toHaveLength(4);
     });
   });
+
+  
+
 });

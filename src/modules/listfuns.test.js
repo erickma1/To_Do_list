@@ -25,7 +25,7 @@ describe('ToDo-List: All CRUD Functions', () => {
 </section>`;
 
   describe('Add new tasks', () => {
-      test('Test ToDo-List to have 2 tasks', () => {
+    test('Test ToDo-List to have 2 tasks', () => {
       todo.addTask('Task 1');
       todo.addTask('Task 2');
       expect(todo.todoList.length).toBe(2);
@@ -44,7 +44,7 @@ describe('ToDo-List: All CRUD Functions', () => {
       expect(liElements).toHaveLength(5);
     });
   });
-  
+
   describe('Remove Task', () => {
     test('Test ToDo-List to have only 4 tasks left', () => {
       const liElements = document.querySelectorAll('.draggable-item');

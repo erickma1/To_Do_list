@@ -87,6 +87,27 @@ describe('ToDo-List: All CRUD Functions', () => {
     });
   });
 
- 
+  describe('ClearAllCompleted tasks', () => {
+    test('Test ToDo-List to have the completed tasks removed', () => {
+      const liElements = document.querySelectorAll('.draggable-item');
+      liElements[0].querySelector('.completed-checkbox').checked = true;
+      liElements[1].querySelector('.completed-checkbox').checked = false;
+      liElements[2].querySelector('.completed-checkbox').checked = true;
+      liElements[3].querySelector('.completed-checkbox').checked = true;
+      updateTask(liElements[0], todo.todoList);
+      updateTask(liElements[2], todo.todoList);
+      updateTask(liElements[3], todo.todoList);
+      todo.clearAllCompleted();
+      expect(todo.todoList.length).toBe(1);
+    });
+    test('Test LocalStorage to have teh first task updated', () => {
+      const todoList = JSON.parse(localStorage.getItem('todo-list'));
+      expect(todoList.length).toBe(1);
+    });
+    test('Test DOM to have the first task updated', () => {
+      const liElements = document.querySelectorAll('.draggable-item');
+      expect(liElements.length).toBe(1);
+    });
+  });
 
 });

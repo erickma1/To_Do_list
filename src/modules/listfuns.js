@@ -38,6 +38,13 @@ export default class ToDo {
     });
   }
 
+  editTaskDescription(liElement, newDescription) {
+    const taskIndex = liElement.getAttribute('value') - 1;
+    this.todoList[taskIndex].description = newDescription;
+    liElement.querySelector('.task-description').value = newDescription;
+    localStorage.setItem('todo-list', JSON.stringify(this.todoList));
+  }
+
   addTask(description) {
     const task = new Task(this.todoList.length + 1, description);
     this.todoList.push(task);

@@ -62,7 +62,7 @@ describe('ToDo-List: All CRUD Functions', () => {
     });
   });
 
-    describe('Update task', () => {
+  describe('Update task', () => {
     test('Test ToDo-List to have the first task updated', () => {
       const liElements = document.querySelectorAll('.draggable-item');
       liElements[0].querySelector('.task-description').value = 'Task 1 Updated';
@@ -108,6 +108,6 @@ describe('ToDo-List: All CRUD Functions', () => {
       const liElements = document.querySelectorAll('.draggable-item');
       expect(liElements.length).toBe(1);
     });
-  });
+});
 
 });

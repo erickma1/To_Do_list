@@ -4,7 +4,6 @@ export function updateTask(liElement, todoList) {
   const taskIndex = liElement.value - 1;
   todoList[taskIndex].description = taskDesc;
   todoList[taskIndex].completed = chkState;
- 
   localStorage.setItem('todo-list', JSON.stringify(todoList));
 }
 

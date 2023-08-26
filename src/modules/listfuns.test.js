@@ -63,7 +63,7 @@ describe('ToDo-List: All CRUD Functions', () => {
   });
 
   describe('Edit Task', () => {
-     test('Test ToDo-List to have the first task Edited', () => {
+    test('Test ToDo-List to have the first task Edited', () => {
       const liElements = document.querySelectorAll('.draggable-item');
       liElements[0].querySelector('.task-description').value = 'Task 1 Edited';
       liElements[0].querySelector('.completed-checkbox').checked = true;
@@ -85,10 +85,7 @@ describe('ToDo-List: All CRUD Functions', () => {
       expect(taskDescription).toBe('Task 1 Edited');
       expect(taskStatus).toBe(true);
     });
-
-
   });
-
   describe('Update task', () => {
     test('Test ToDo-List to have the first task updated', () => {
       const liElements = document.querySelectorAll('.draggable-item');

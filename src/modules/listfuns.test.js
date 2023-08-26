@@ -62,6 +62,31 @@ describe('ToDo-List: All CRUD Functions', () => {
     });
   });
 
-  
+    describe('Update task', () => {
+    test('Test ToDo-List to have the first task updated', () => {
+      const liElements = document.querySelectorAll('.draggable-item');
+      liElements[0].querySelector('.task-description').value = 'Task 1 Updated';
+      liElements[0].querySelector('.completed-checkbox').checked = true;
+      updateTask(liElements[0], todo.todoList);
+      expect(todo.todoList[0].description).toBe('Task 1 Updated');
+      expect(todo.todoList[0].completed).toBe(true);
+    });
+
+    test('Test LocalStorage to have teh first task updated', () => {
+      const todoList = JSON.parse(localStorage.getItem('todo-list'));
+      expect(todoList[0].description).toBe('Task 1 Updated');
+      expect(todoList[0].completed).toBe(true);
+    });
+
+    test('Test DOM to have the first task updated', () => {
+      const liElements = document.querySelectorAll('.draggable-item');
+      const taskDescription = liElements[0].querySelector('.task-description').value;
+      const taskStatus = liElements[0].querySelector('.completed-checkbox').checked;
+      expect(taskDescription).toBe('Task 1 Updated');
+      expect(taskStatus).toBe(true);
+    });
+  });
+
+ 
 
 });

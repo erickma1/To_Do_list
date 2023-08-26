@@ -108,6 +108,5 @@ describe('ToDo-List: All CRUD Functions', () => {
       const liElements = document.querySelectorAll('.draggable-item');
       expect(liElements.length).toBe(1);
     });
-});
-
+  });
 });
